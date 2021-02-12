@@ -462,7 +462,6 @@ node.restore()
 node.restart() -- ensure the restored settings take effect
 ```
 
-
 ## node.setcpufreq()
 
 Change the working CPU Frequency.
@@ -480,6 +479,27 @@ target CPU frequency (number)
 ```lua
 node.setcpufreq(node.CPU80MHZ)
 ```
+
+## node.setonerror()
+
+Use this to override the default "always restart" action if wanted; for example to write an error to a logfile or to a network syslog before restarting.
+
+#### Syntax
+`node.setonerror(function)`
+
+#### Parameters
+`function` a callback function to be executed when an error occurs, gets the error string as an argument
+
+#### Returns
+`nil`
+
+#### Example
+```lua
+node.setonerror(function(s)
+    print("Error: "..s)
+  end)
+```
+
 
 ## node.setpartitiontable()
 
